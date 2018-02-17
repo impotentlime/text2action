@@ -1,11 +1,14 @@
 from django.shortcuts import render
+from django.utils import timezone
 from django.http import HttpResponse
+from .models import Post
 import random
 import tensorflow as tf
 import matplotlib.pyplot as plt
 
 def post_list(request):
-    return render(request, 'blog/post_list.html', {})
+    posts = Post.objects.all()
+    return render(request, 'blog/post_list.html', {'posts': posts})
 
 def helloworld(request, num1, num2):
     # logs_path = ''
