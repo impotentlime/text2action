@@ -10,6 +10,40 @@ def post_list(request):
     posts = Post.objects.all()
     return render(request, 'blog/post_list.html', {'posts': posts})
 
+def test_template(request):
+    posts = Post.objects.all()
+    title_post = Post.objects.get(title="About this project")
+    seq2seq = Post.objects.get(title="Seq2Seq")
+    LSTM = Post.objects.get(title="Long-Short Term Memory (LSTM)")
+    word2vec = Post.objects.get(title="Word2Vec")
+    RNN = Post.objects.get(title="Recurrent Neural Networks (RNN)")
+    return render(request, 'blog/test_template2.html', {
+        'title_post': title_post,
+        'posts': posts,
+        'seq2seq': seq2seq,
+        'LSTM': LSTM,
+        'word2vec': word2vec,
+        'RNN': RNN
+    })
+
+def final(request):
+    title_post = Post.objects.get(title="About this project")
+    seq2seq = Post.objects.get(title="Seq2Seq")
+    LSTM = Post.objects.get(title="Long-Short Term Memory (LSTM)")
+    word2vec = Post.objects.get(title="Word2Vec")
+    RNN = Post.objects.get(title="Recurrent Neural Networks (RNN)")
+    return render(request, 'blog/final.html',
+    {
+        'title_post': title_post,
+        'seq2seq': seq2seq,
+        'LSTM': LSTM,
+        'word2vec': word2vec,
+        'RNN': RNN
+    })
+
+def ang(request):
+    return render(request, 'blog/test.html')
+
 def helloworld(request, num1, num2):
     # logs_path = ''
     n1 = int(num1)
