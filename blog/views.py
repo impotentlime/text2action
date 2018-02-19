@@ -1,48 +1,77 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.utils import timezone
 from django.http import HttpResponse
 from .models import Post
 import random
 import tensorflow as tf
 import matplotlib.pyplot as plt
+from .forms import PostForm
+
+"""
+TUTORIAL CODES
+############################################################
+post_<something> htmls and view functions are from tutorials
+############################################################
+"""
+
+def post_new(request):
+    if request.method == "POST":
+        form = PostForm(request.POST)
+        if form.is_valid():
+            post = form.save(commit=False)
+            post.author = request.user
+            post.published_date = timezone.now()
+            post.save()
+            return redirect('post_detail', pk=post.pk)
+    else:
+        form = PostForm()
+    return render(request, 'blog/post_edit.html', {'form': form})
 
 def post_list(request):
     posts = Post.objects.all()
     return render(request, 'blog/post_list.html', {'posts': posts})
 
-def test_template(request):
+def post_detail(request, pk):
+    post = get_object_or_404(Post, pk=pk)
+    return render(request, 'blog/post_detail.html', {'post': post})
+
+"""
+PROJECT CODES
+############################################################
+final_<something> htmls and view functions are changed
+version of tutorial codes for the project
+############################################################
+"""
+
+
+def final_list(request):
     posts = Post.objects.all()
-    title_post = Post.objects.get(title="About this project")
-    seq2seq = Post.objects.get(title="Seq2Seq")
-    LSTM = Post.objects.get(title="Long-Short Term Memory (LSTM)")
-    word2vec = Post.objects.get(title="Word2Vec")
-    RNN = Post.objects.get(title="Recurrent Neural Networks (RNN)")
-    return render(request, 'blog/test_template2.html', {
-        'title_post': title_post,
-        'posts': posts,
-        'seq2seq': seq2seq,
-        'LSTM': LSTM,
-        'word2vec': word2vec,
-        'RNN': RNN
-    })
+    return render(request, 'blog/final_list.html', {'posts': posts})
 
-def final(request):
-    title_post = Post.objects.get(title="About this project")
-    seq2seq = Post.objects.get(title="Seq2Seq")
-    LSTM = Post.objects.get(title="Long-Short Term Memory (LSTM)")
-    word2vec = Post.objects.get(title="Word2Vec")
-    RNN = Post.objects.get(title="Recurrent Neural Networks (RNN)")
-    return render(request, 'blog/final.html',
-    {
-        'title_post': title_post,
-        'seq2seq': seq2seq,
-        'LSTM': LSTM,
-        'word2vec': word2vec,
-        'RNN': RNN
-    })
+def final_detail(request, pk):
+    post = get_object_or_404(Post, pk=pk)
+    return render(request, 'blog/final_detail.html', {'post': post})
 
-def ang(request):
-    return render(request, 'blog/test.html')
+def final_new(request):
+    if request.method == "POST":
+        form = PostForm(request.POST)
+        if form.is_valid():
+            post = form.save(commit=False)
+            post.author = request.user
+            post.published_date = timezone.now()
+            post.save()
+            return redirect('final_detail', pk=post.pk)
+    else:
+        form = PostForm()
+    return render(request, 'blog/final_edit.html', {'form': form})
+
+"""
+TEST CODES
+############################################################
+Written for try new things out, such as applying basic
+tensorflow and matplotlib codes.
+############################################################
+"""
 
 def helloworld(request, num1, num2):
     # logs_path = ''
@@ -84,3 +113,7 @@ def plot(request):
     plt.show()
 
     return HttpResponse("%s %s" % (W_val, cost_val))
+
+def test(request, pk):
+    post = get_object_or_404(Post, pk=pk)
+    return render(request, 'blog/test.html', {'post': post})

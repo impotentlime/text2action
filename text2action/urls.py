@@ -24,6 +24,8 @@ urlpatterns = [
     url(r'^(?P<num1>\d+)/(?P<num2>\d+)/$', helloworld),
     url(r'^plot/$', plot),
     url(r'', include('blog.urls')),
+    url(r'^tinymce/', include('tinymce.urls')),
+    url(r'^mce_filebrowser/', include('mce_filebrowser.urls')),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)

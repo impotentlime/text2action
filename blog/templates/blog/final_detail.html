@@ -1,0 +1,19 @@
+{% extends 'blog/final_base.html' %}
+
+{% block content %}
+<div class="w3-card-4 w3-margin w3-white">
+  <!--
+  <img src="/media/{{title_post.image}}" alt="Nature" style="width:100%">
+  -->
+  <div class="w3-container">
+    <h3><b>{{post.title}}</b></h3>
+    <h5>{{post.author}}, <span class="w3-opacity">{{post.published_date}}</span></h5>
+  </div>
+
+  <div class="w3-container" id="log">
+    <p>{{post.text}}</p>
+    <p>{{post.test | safe}}</p>
+  </div>
+</div>
+
+{% endblock %}
