@@ -3,8 +3,8 @@ from django.utils import timezone
 from django.http import HttpResponse
 from .models import Post
 import random
-import tensorflow as tf
-import matplotlib.pyplot as plt
+# import tensorflow as tf
+# import matplotlib.pyplot as plt
 from .forms import PostForm
 
 """
@@ -73,6 +73,7 @@ tensorflow and matplotlib codes.
 ############################################################
 """
 
+"""
 def helloworld(request, num1, num2):
     # logs_path = ''
     n1 = int(num1)
@@ -113,6 +114,7 @@ def plot(request):
     plt.show()
 
     return HttpResponse("%s %s" % (W_val, cost_val))
+"""
 
 """
 def test(request, pk):

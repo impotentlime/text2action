@@ -15,14 +15,14 @@ Including another URLconf
 """
 from django.conf.urls import url, include
 from django.contrib import admin
-from blog.views import helloworld, plot
+# from blog.views import helloworld, plot
 from django.conf.urls.static import static
 from . import settings
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^(?P<num1>\d+)/(?P<num2>\d+)/$', helloworld),
-    url(r'^plot/$', plot),
+    # url(r'^(?P<num1>\d+)/(?P<num2>\d+)/$', helloworld),
+    # url(r'^plot/$', plot),
     url(r'', include('blog.urls')),
     url(r'^tinymce/', include('tinymce.urls')),
 ]
