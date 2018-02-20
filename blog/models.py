@@ -8,9 +8,7 @@ class Post(models.Model):
     title = models.CharField(max_length = 200)
     summary = models.TextField(default='')
     content = models.TextField(default='')
-    image = models.ImageField(default = 'static/blog/images/text2action3.jpg')
-    image2 = models.ImageField(default = 'static/blog/images/blank.jpg')
-    image3 = models.ImageField(default = 'static/blog/images/blank.jpg')
+    references = models.TextField(default='')
     created_date = models.DateTimeField(default = timezone.now)
     published_date = models.DateTimeField(blank = True, null = True)
 
