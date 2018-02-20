@@ -6,9 +6,8 @@ from django import forms
 class Post(models.Model):
     author = models.ForeignKey('auth.User')
     title = models.CharField(max_length = 200)
-    text = models.TextField()
-    test = HTMLField(default='')
-    content = models.TextField(default='content')
+    summary = models.TextField(default='')
+    content = models.TextField(default='')
     image = models.ImageField(default = 'static/blog/images/text2action3.jpg')
     image2 = models.ImageField(default = 'static/blog/images/blank.jpg')
     image3 = models.ImageField(default = 'static/blog/images/blank.jpg')

@@ -114,6 +114,8 @@ def plot(request):
 
     return HttpResponse("%s %s" % (W_val, cost_val))
 
+"""
 def test(request, pk):
     post = get_object_or_404(Post, pk=pk)
     return render(request, 'blog/test.html', {'post': post})
+"""

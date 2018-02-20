@@ -39,8 +39,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'blog',
     'tinymce',
-    'sorl.thumbnail',
-    'mce_filebrowser',
 ]
 
 MIDDLEWARE = [

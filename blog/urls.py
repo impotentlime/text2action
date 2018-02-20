@@ -10,5 +10,5 @@ urlpatterns = [
     url(r'^(?P<pk>[0-9]+)/$', views.final_detail, name='final_detail'),
     url(r'^new/$', views.final_new, name='final_new'),
 
-    url(r'^test/(?P<pk>[0-9]+)/$', views.test, name='test'),
+    # url(r'^test/(?P<pk>[0-9]+)/$', views.test, name='test'),
 ]
